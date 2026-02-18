@@ -1,0 +1,508 @@
+/* --- Hero Section --- */
+.hero-section {
+  text-align: left;
+  padding: 3rem 1rem 5rem;
+  background: radial-gradient(circle at 30% 50%, var(--bg-subtle) 0%, transparent 60%);
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.guru-photo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--bg-surface);
+  box-shadow: var(--shadow-md);
+  flex-shrink: 0;
+  transition: transform 0.3s var(--ease-spring);
+}
+
+.guru-photo:hover {
+  transform: scale(1.05);
+}
+
+.guru-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-text {
+  max-width: 600px;
+  flex: 1;
+}
+
+.hero-section h1 {
+  font-size: 2.25rem;
+  margin-bottom: 0.75rem;
+  color: var(--primary-dark);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.guru-name {
+  display: inline-block;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--primary);
+  position: relative;
+  white-space: nowrap;
+}
+
+.guru-name::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--accent);
+  opacity: 0.6;
+}
+
+/* --- Global Search --- */
+.home-global-search {
+  width: 100%;
+  max-width: 100%;
+  margin-top: 1.5rem;
+  position: relative;
+  z-index: 100;
+}
+
+.home-search-bar-container {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.home-search-filter {
+  padding: 0.8rem 1rem;
+  font-size: 0.95rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  color: var(--text-main);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: all 0.2s var(--ease-smooth);
+  appearance: none;
+  /* Remove default arrow */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 256 256'%3E%3Cpath fill='%236D5D55' d='M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  padding-right: 2.5rem;
+}
+
+.home-search-filter:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: var(--shadow-md);
+}
+
+.home-global-search-label {
+  display: none;
+}
+
+.home-global-search-inputRow {
+  position: relative;
+  flex: 1;
+  /* Take remaining space */
+}
+
+.home-global-search-input {
+  width: 100%;
+  padding: 0.8rem 1.25rem 0.8rem 3rem;
+  font-size: 1rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+  color: var(--text-main);
+  transition: all 0.2s var(--ease-smooth);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 256 256'%3E%3Cpath fill='%239C8C84' d='M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 1rem center;
+  background-size: 1.2rem;
+}
+
+.home-global-search-input:focus {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md), 0 0 0 4px rgba(212, 163, 115, 0.1);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.home-global-search-input::placeholder {
+  color: var(--text-light);
+}
+
+.home-global-search-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 100%;
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  max-height: 400px;
+  overflow-y: auto;
+  border: 1px solid var(--border-color);
+}
+
+.home-global-search-item {
+  display: block;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--bg-subtle);
+  transition: background 0.15s ease;
+  text-align: left;
+}
+
+.home-global-search-item:hover {
+  background-color: var(--bg-subtle);
+}
+
+.home-global-search-itemTitle {
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 0.15rem;
+  font-size: 0.95rem;
+}
+
+.home-global-search-itemMeta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.home-global-search-itemKind {
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  color: var(--accent-dark);
+}
+
+/* --- Daily Quote --- */
+.daily-quote-section {
+  max-width: 1000px;
+  margin: -3.5rem auto 4rem;
+  position: relative;
+  z-index: 10;
+  padding: 0 1rem;
+}
+
+.daily-quote-card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.daily-quote-inner {
+  display: flex;
+  min-height: 300px;
+}
+
+.daily-quote-image {
+  flex: 0 0 35%;
+  position: relative;
+  background-color: var(--bg-subtle);
+  overflow: hidden;
+}
+
+.daily-quote-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.daily-quote-card:hover .daily-quote-image img {
+  transform: scale(1.05);
+}
+
+.daily-quote-content {
+  flex: 1;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hide image right on desktop if present in HTML, design prefers single image layout or we fix styling */
+.daily-quote-image-right {
+  display: none;
+}
+
+.daily-quote-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--bg-subtle);
+  flex-wrap: wrap;
+}
+
+.daily-quote-label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-dark);
+}
+
+.quote-language-tabs {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.quote-language-tab {
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  border-radius: var(--radius-full);
+  transition: all 0.2s ease;
+}
+
+.quote-language-tab:hover {
+  background: var(--bg-body);
+}
+
+.quote-language-tab.active {
+  background: var(--bg-subtle);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.daily-quote-viewport {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.daily-quote-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: var(--text-main);
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+/* Font variants */
+.daily-quote-text.font-hindi {
+  font-family: 'Noto Serif Devanagari', serif;
+  line-height: 1.8;
+  font-size: 1.4rem;
+}
+
+.daily-quote-text.font-odia {
+  font-family: 'Noto Serif Oriya', serif;
+  line-height: 1.8;
+  font-size: 1.4rem;
+}
+
+.daily-quote-text.font-bengali {
+  font-family: 'Noto Serif Bengali', serif;
+  line-height: 1.8;
+  font-size: 1.4rem;
+}
+
+.daily-quote-meta {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+/* --- Features Grid --- */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto 5rem;
+  padding: 0 1rem;
+}
+
+.feature-card {
+  background: var(--bg-surface);
+  padding: 2.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s var(--ease-spring);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(212, 163, 115, 0.2);
+}
+
+.feature-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: var(--bg-subtle);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+  transform: rotate(5deg) scale(1.1);
+  background: var(--accent);
+  color: white;
+}
+
+.feature-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.feature-card p {
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.feature-card-disabled {
+  opacity: 0.6;
+  pointer-events: none;
+  background: var(--bg-body);
+}
+
+/* --- Info Section --- */
+.info-section {
+  background: var(--bg-surface);
+  padding: 4rem 1rem;
+  border-top: 1px solid var(--bg-subtle);
+}
+
+.info-section h2 {
+  font-size: 2.25rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--text-main);
+}
+
+.info-section p {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+.stats-container {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-light);
+  letter-spacing: 0.05em;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 2rem 1rem 3rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .guru-photo {
+    width: 120px;
+    height: 120px;
+  }
+
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+
+  .daily-quote-section {
+    margin-top: 0;
+  }
+
+  .daily-quote-inner {
+    flex-direction: column;
+  }
+
+  .daily-quote-image {
+    height: 200px;
+    width: 100%;
+    flex: none;
+  }
+
+  .daily-quote-content {
+    padding: 1.5rem;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .stats-container {
+    gap: 2rem;
+  }
+}
