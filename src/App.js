@@ -14,14 +14,24 @@ import Live from './components/Live';
 import CryingSchoolLibrary from './components/CryingSchoolLibrary';
 import CryingSchoolPlaylist from './components/CryingSchoolPlaylist';
 import About from './components/About';
-import liveConfig from './config/liveConfig.json';
 
 import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+  const [isLiveNow, setIsLiveNow] = React.useState(false);
 
-  const hasLiveUrl = Boolean((liveConfig?.url || '').trim());
+  // Fetch live status from the API to show the dot in nav only when actually live
+  React.useEffect(() => {
+    fetch('/api/live')
+      .then((res) => res.ok ? res.json() : null)
+      .then((data) => {
+        if (data?.live?.status === true) {
+          setIsLiveNow(true);
+        }
+      })
+      .catch(() => { });
+  }, []);
 
   const Router = Capacitor.isNativePlatform() ? HashRouter : BrowserRouter;
 
@@ -101,7 +111,7 @@ function App() {
                 >
                   <span className="nav-label">
                     Live
-                    {hasLiveUrl && <span className="live-indicator-dot" aria-hidden="true" />}
+                    {isLiveNow && <span className="live-indicator-dot" aria-hidden="true" />}
                   </span>
                 </NavLink>
                 <NavLink
