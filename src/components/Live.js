@@ -67,11 +67,30 @@ function Live() {
   }
 
   if (error) {
+    // Fallback: embed the channel's live stream directly (works in local dev without Vercel API)
+    const CHANNEL_ID = "UC4IEe3gMst3nTRVWKJfd8Ng";
+    const fallbackEmbed = `https://www.youtube-nocookie.com/embed/live_stream?channel=${CHANNEL_ID}`;
     return (
       <div className="live-container">
-        <div className="live-empty-state" style={{ color: 'red' }}>
-          <h2>Connection Error</h2>
-          <p>{error}</p>
+        <div className="library-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <p>Watch the current live / latest lecture stream</p>
+        </div>
+        <div className="live-player-card">
+          <div className="live-player-frame" aria-label="Live video player">
+            <iframe
+              src={fallbackEmbed}
+              title="Live Stream"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              referrerPolicy="strict-origin-when-cross-origin"
+            />
+          </div>
+          <div className="live-description">
+            <h2 style={{ marginTop: '0.4rem', fontSize: '1.2rem', marginBottom: '0.5rem', color: '#4a2f1a' }}>
+              Guru Maharaja Live / Latest Stream
+            </h2>
+          </div>
         </div>
       </div>
     );

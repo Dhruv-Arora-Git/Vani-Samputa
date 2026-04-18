@@ -167,6 +167,7 @@ function VideoLibrary() {
       ) : (
         <>
           <div className="search-container">
+            {/* ... search bar and category filter ... */}
             <div className="search-bar">
               <span className="search-icon">
                 <MagnifyingGlass size={18} />
@@ -249,6 +250,7 @@ function VideoLibrary() {
               )}
             </div>
           </div>
+          <div className="video-search-spacer" />
 
           {filteredPlaylists.length > 0 ? (
             <div className="playlists-grid">

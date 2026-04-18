@@ -218,6 +218,7 @@ function AudioLibrary() {
               )}
             </div>
           </div>
+          <div className="audio-search-spacer" />
 
           {filteredPlaylists.length > 0 ? (
             <div className="playlists-grid">

@@ -14,10 +14,10 @@
 }
 
 .live-player-card {
-  background: white;
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-elevated);
-  border: 1px solid rgba(139, 111, 71, 0.18);
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-color);
   overflow: hidden;
 }
 
@@ -37,38 +37,38 @@
 .live-empty-state {
   padding: 2rem;
   text-align: center;
-  background: linear-gradient(135deg, #f5f0e8 0%, #ffffff 50%, #f5f0e8 100%);
+  background: linear-gradient(135deg, var(--bg-subtle) 0%, var(--bg-surface) 50%, var(--bg-subtle) 100%);
 }
 
 .live-empty-state h2 {
   margin: 0 0 0.75rem;
   font-size: 1.4rem;
-  color: #4a2f1a;
+  color: var(--primary-dark);
 }
 
 .live-empty-state p {
   margin: 0;
-  color: #666;
-  font-size: 1.05rem;
+  color: var(--text-muted);
+  font-size: 1rem;
   line-height: 1.55;
 }
 
 .live-description {
   padding: 1.25rem 1.5rem 1.5rem;
-  background: white;
-  border-top: 1px solid rgba(139, 111, 71, 0.12);
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-color);
 }
 
 .live-description h2 {
   margin: 0 0 0.5rem;
-  font-size: 1.15rem;
-  color: #4a2f1a;
+  font-size: 1.1rem;
+  color: var(--primary-dark);
 }
 
 .live-description p {
   margin: 0;
-  color: #666;
-  font-size: 1.02rem;
+  color: var(--text-muted);
+  font-size: 0.98rem;
   line-height: 1.6;
 }
 
@@ -88,5 +88,23 @@
 
   .live-description {
     padding: 1rem 1.1rem 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .live-empty-state {
+    padding: 1.25rem;
+  }
+
+  .live-empty-state h2 {
+    font-size: 1.15rem;
+  }
+
+  .live-description {
+    padding: 0.9rem 1rem 1rem;
+  }
+
+  .live-description h2 {
+    font-size: 1rem;
   }
 }

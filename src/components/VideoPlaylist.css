@@ -54,12 +54,18 @@
   font-weight: 500;
 }
 
-/* YouTube Layout */
+/* YouTube Layout - single column on mobile, side-by-side on larger screens */
 .youtube-layout {
   display: grid;
-  grid-template-columns: 1fr 380px;
+  grid-template-columns: 1fr;
   gap: 1.5rem;
   align-items: start;
+}
+
+@media (min-width: 960px) {
+  .youtube-layout {
+    grid-template-columns: 1fr 360px;
+  }
 }
 
 /* Main Video Section */
@@ -129,16 +135,22 @@
   background: var(--bg-surface);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
-  height: calc(100vh - 120px);
-  /* Fill remaining height roughly */
-  max-height: 800px;
-  /* Cap it */
+  height: auto;
+  max-height: 400px;
   display: flex;
   flex-direction: column;
-  position: sticky;
-  top: 1rem;
+  position: static;
   border: 1px solid rgba(0, 0, 0, 0.02);
   overflow: hidden;
+}
+
+@media (min-width: 960px) {
+  .playlist-sidebar {
+    height: calc(100vh - 120px);
+    max-height: 800px;
+    position: sticky;
+    top: 1rem;
+  }
 }
 
 .playlist-sidebar-header {
@@ -281,6 +293,7 @@
 
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -334,41 +347,27 @@
 }
 
 /* Responsive Design */
-@media (max-width: 1024px) {
-  .youtube-layout {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .playlist-sidebar {
-    height: auto;
-    max-height: 400px;
-    position: static;
-  }
-}
-
 @media (max-width: 768px) {
   .compact-header {
-    flex-direction: row;
     align-items: center;
     gap: 0.75rem;
   }
 
   .compact-title-wrapper h1 {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
   }
 
   .main-video-info {
-    padding: 1rem;
+    padding: 0.9rem;
   }
 
-  .main-video-iframe {
-    height: auto;
-    aspect-ratio: 16/9;
+  .main-video-info h2 {
+    font-size: 1.15rem;
   }
 
   .playlist-item {
-    padding: 0.75rem;
+    padding: 0.85rem 0.75rem;
+    min-height: 44px;
   }
 
   .playlist-item-thumbnail-wrapper {
@@ -377,4 +376,30 @@
   }
 }
 
-@media (max-width: 480px) {}
+@media (max-width: 480px) {
+  .compact-title-wrapper h1 {
+    font-size: 0.95rem;
+  }
+
+  .main-video-info {
+    padding: 0.75rem;
+  }
+
+  .main-video-info h2 {
+    font-size: 1rem;
+  }
+
+  .playlist-sidebar {
+    max-height: 300px;
+  }
+
+  .playlist-item-thumbnail-wrapper {
+    width: 76px;
+    height: 43px;
+  }
+
+  .playlist-item {
+    gap: 0.5rem;
+    padding: 0.75rem;
+  }
+}
